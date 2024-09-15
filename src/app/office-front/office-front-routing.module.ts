@@ -10,7 +10,7 @@ const routes: Routes = [
         path: '',
         component: OfficeFrontComponent,
         data: {
-          title: 'office-front'
+          title: 'OfficeFront'
         }
       },
     ]

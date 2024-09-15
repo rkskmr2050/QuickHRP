@@ -10,7 +10,7 @@ const routes: Routes = [
         path: '',
         component: PharmacyComponent,
         data: {
-          title: 'pharmacy'
+          title: 'Pharmacy'
         }
       },
     ]
