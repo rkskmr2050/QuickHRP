@@ -28,3 +28,5 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Commands
 npm install --legacy-peer-deps
+
+Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
