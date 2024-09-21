@@ -1,38 +1,62 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from "@angular/common";
-import { RouterModule } from "@angular/router";
+import { CommonModule } from '@angular/common';
+import { NgApexchartsModule } from "ng-apexcharts";
+import { DataService } from './data/data.service';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { MaterialModule } from './material/material.module';
+import { NgxBootstrapModule } from './ngx-bootstrap/ngx-bootstrap.module';
+import { NgxMaskModule } from 'ngx-mask';
+import { AngularEditorModule } from '@kolkov/angular-editor';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { DatepickerModule } from 'ng2-datepicker';
+import { PerfectScrollbarConfigInterface, PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 
-import { FooterComponent } from "./footer/footer.component";
-import { NavbarComponent } from "./navbar/navbar.component";
-import { SidebarComponent } from "./sidebar/sidebar.component";
-import { ColorSwitcherComponent } from './color-switcher/color-switcher.component';
-
-
+const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
+  suppressScrollX: true,
+};
 
 @NgModule({
-    exports: [
-        CommonModule,
-        FooterComponent,
-        NavbarComponent,
-        SidebarComponent,
-        ColorSwitcherComponent,
-        NgbModule
-    ],
-    imports: [
-        RouterModule,
-        CommonModule,
-        NgbModule,
-        PerfectScrollbarModule
-    ],
-    declarations: [
-        FooterComponent,
-        NavbarComponent,
-        SidebarComponent,
-        ColorSwitcherComponent
-    ],
-    providers: [ ],
+  declarations: [],
+  imports: [
+    CommonModule,
+    NgApexchartsModule,
+    HttpClientModule,
+    FormsModule,
+    MaterialModule,
+    ReactiveFormsModule,
+    NgxBootstrapModule,
+    NgxMaskModule.forRoot({
+      showMaskTyped: false,
+    }),
+    AngularEditorModule,
+    SweetAlert2Module.forRoot(),
+    PerfectScrollbarModule,
+    DatepickerModule
+  ],
+  exports: [
+    CommonModule,
+    NgApexchartsModule,
+    HttpClientModule,
+    FormsModule,
+    MaterialModule,
+    ReactiveFormsModule,
+    NgxBootstrapModule,
+    NgxMaskModule,
+    AngularEditorModule,
+    SweetAlert2Module,
+    // FullCalendarModule,
+    PerfectScrollbarModule,
+    DatepickerModule
+  ],
+  providers: [
+    DataService,
+    {
+      provide: PERFECT_SCROLLBAR_CONFIG,
+      useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG,
+    },
+  ]
 })
 export class SharedModule { }

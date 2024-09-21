@@ -1,19 +1,13 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "cli": {
-    "analytics": "a85356aa-6b47-4a8d-88e2-f047485ada33"
-  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Syndash-angular": {
+    "crms_angular": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
-        },
-        "@schematics/angular:application": {
-          "strict": true
         }
       },
       "root": "",
@@ -23,17 +17,12 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "allowedCommonJsDependencies": [
-              "lodash",
-              "jquery",
-              "chart.js",
-              "chartjs-plugin-annotation",
-              "highcharts"
-            ],
-            "outputPath": "dist/syndash-angular",
+            "outputPath": "dist/crms_angular",
             "index": "src/index.html",
             "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
+            "polyfills": [
+              "zone.js"
+            ],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -41,22 +30,29 @@
               "src/assets"
             ],
             "styles": [
-              "src/assets/css/icons.css",
-              "src/assets/plugins/input-tags/css/tagsinput.css",
-              "node_modules/angular-calendar/css/angular-calendar.css",
-              "node_modules/flatpickr/dist/flatpickr.min.css",
-              "src/assets/sass/app.scss",
-              "src/styles.scss"
+              "./node_modules/ngx-lightbox/lightbox.css",
+              "src/assets/icons/ionic/ionicons.css",
+              "src/assets/icons/material/materialdesignicons.css",
+              "src/assets/icons/pe7/pe-icon-7.css",
+              "src/assets/icons/simpleline/simple-line-icons.css",
+              "src/assets/icons/themify/themify.css",
+              "src/assets/icons/weather/weathericons.css",
+              "src/assets/icons/typicons/typicons.css",
+              "src/assets/icons/flags/flags.css",
+              "src/assets/icons/feather/css/iconfont.css",
+              "src/assets/css/line-awesome.min.css",
+              "src/assets/fontawesome/css/fontawesome.min.css",
+              "src/assets/fontawesome/css/all.min.css",
+              "src/assets/css/font-awesome.min.css",
+              "node_modules/bootstrap/scss/bootstrap.scss",
+              "src/styles.scss",
+              "ag-grid-community/styles/ag-grid.css",
+              "ag-grid-community/styles/ag-theme-quartz.css"
             ],
             "scripts": [
-              "node_modules/chart.js/dist/Chart.min.js",
               "node_modules/apexcharts/dist/apexcharts.min.js",
-              "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/@popperjs/core/dist/umd/popper.js",
-              "node_modules/bootstrap/dist/js/bootstrap.min.js",
-              "src/assets/plugins/jvector-map/jquery-jvectormap-2.0.2.min.js",
-              "src/assets/plugins/jvector-map/jquery-jvectormap-world-mill-en.js",
-              "src/assets/js/feather.min.js"
+              "node_modules/chart.js/dist/chart.js",
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
             ]
           },
           "configurations": {
@@ -64,19 +60,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "3mb",
-                  "maximumError": "5mb"
+                  "maximumWarning": "7mb",
+                  "maximumError": "8mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
-                }
-              ],
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
+                  "maximumWarning": "7mb",
+                  "maximumError": "8mb"
                 }
               ],
               "outputHashing": "all"
@@ -96,10 +86,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "Syndash-angular:build:production"
+              "browserTarget": "crms_angular:build:production"
             },
             "development": {
-              "browserTarget": "Syndash-angular:build:development"
+              "browserTarget": "crms_angular:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -107,16 +97,17 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Syndash-angular:build"
+            "browserTarget": "crms_angular:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
             "tsConfig": "tsconfig.spec.json",
-            "karmaConfig": "karma.conf.js",
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
@@ -127,9 +118,23 @@
             ],
             "scripts": []
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
   },
-  "defaultProject": "Syndash-angular"
+  "cli": {
+    "analytics": "bf1a3841-2273-44ca-bc19-34791a98bf8a",
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
+  }
 }
