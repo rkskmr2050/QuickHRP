@@ -1,20 +1,28 @@
 <div>
-    <div class="page-wrapper">
-      <div class="content container-fluid">
+  <div class="page-wrapper">
+     <div class="content container-fluid">
         <!-- Page Header -->
         <div class="crms-title row bg-white mb-4">
-          <div class="col">
-            <h3 class="page-title">
-              <span class="page-title-icon bg-gradient-primary text-white me-2">
-                <i class="la la-table"></i>
-              </span>
-              <span>Front Office</span>
-            </h3>
-          </div>
+           <div class="col">
+              <h3 class="page-title">
+                 <span class="page-title-icon bg-gradient-primary text-white me-2">
+                 <i class="la la-table"></i>
+                 </span>
+                 <span>Front Office</span>
+              </h3>
+           </div>
+           <div class="col text-end">
+              <ul class="list-inline-item ps-0 m-0">
+                 <li class="list-inline-item">
+                    <button class="add btn btn-gradient-primary font-weight-bold text-white todo-list-add-btn btn-rounded"
+                       id="add-task" data-bs-toggle="modal" data-bs-target="#add_activity">
+                    Add Visitor
+                    </button>
+                 </li>
+              </ul>
+           </div>
         </div>
-  
         <!-- /Page Header -->
-  
         <ag-grid-angular
         class="ag-theme-quartz"
         style="height: 510px;"
@@ -23,8 +31,128 @@
         [paginationPageSizeSelector]="paginationPageSizeSelector"
         [rowData]="rowData"
         [columnDefs]="colDefs" />
-
-      </div>
-    </div>
+     </div>
+  </div>
 </div>
-        
+<!-- Modal -->
+<div class="modal right fade" id="add_activity" tabindex="-1" role="dialog" aria-modal="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+     <button type="button" class="close md-close" data-bs-dismiss="modal" aria-label="Close">
+     <span aria-hidden="true">×</span>
+     </button>
+     <div class="modal-content">
+        <div class="modal-header">
+           <button type="button" class="btn-close xs-close close-modal" data-bs-dismiss="modal"></button>
+           <h4 class="modal-title">Add Visitor</h4>
+        </div>
+        <div class="modal-body">
+           <form class="forms-sampme">
+              <div class="row">
+                 <div class="col-sm-12">
+                    <div class="form-group">
+                       <div class="row">
+                          <div class="col-md-6">
+                             <select class="form-select">
+                                <option value="">-Select Purpose-</option>
+                                <option value="Visit">Visit</option>
+                                <option value="Inquiry ">Inquiry </option>
+                                <option value="Seminar ">Seminar </option>
+                             </select>
+                          </div>
+                          <div class="col-md-6">
+                             <input class="form-control" type="text" name="name" id="name" placeholder="Name" />
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+                 <div class="col-sm-12">
+                    <div class="form-group">
+                       <div class="row">
+                          <div class="col-md-6">
+                             <input class="form-control" type="text" name="phone" id="phone" placeholder="Phone" />
+                          </div>
+                          <div class="col-md-6">
+                             <input class="form-control" type="text" name="idCard" id="idCard" placeholder="ID Card" />
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+                 <div class="col-sm-12">
+                    <div class="form-group">
+                       <div class="row">
+                          <div class="col-md-3">
+                             <select class="form-select">
+                                <option value="">-Select Visit To-</option>
+                                <option value="Visit">Staff</option>
+                                <option value="Inquiry ">OPD Patient </option>
+                                <option value="Seminar ">IPD Patient </option>
+                             </select>
+                          </div>
+                          <div class="col-md-3">
+                             <select class="form-select">
+                                <option value="">-Select Staff/OPD/IPD-</option>
+                                <option value="Visit">Vijay Sharma</option>
+                                <option value="Inquiry ">Mohit Sharma </option>
+                                <option value="Seminar ">Gaurav Saini </option>
+                                <option value="Seminar ">Manmohan </option>
+                                <option value="Seminar ">Nishant </option>
+                             </select>
+                          </div>
+                          <div class="col-md-6">
+                             <input class="form-control" type="text" name="relatedTo" id="relatedTo" disabled="true" placeholder="Related To" />
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+                 <div class="col-sm-12">
+                    <div class="form-group">
+                       <div class="row">
+                          <div class="col-md-6">
+                             <input class="form-control" type="text" name="noOfPerson" id="noOfPerson" placeholder="Numner Of Person" />
+                          </div>
+                          <div class="col-md-6">
+                             <input class="form-control datetimepicker" type="text" placeholder="MM/DD/YY" matInput
+                                [matDatepicker]="picker1" />
+                             <mat-datepicker #picker1></mat-datepicker>
+                             <mat-datepicker-toggle matIconSuffix [for]="picker1"
+                                class="modal-activity-datepicker"></mat-datepicker-toggle>
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+                 <div class="col-sm-12">
+                    <div class="form-group">
+                       <div class="row">
+                          <div class="col-md-6">
+                             <input class="form-control" type="text" name="inTime" id="inTime" placeholder="In Time" />
+                          </div>
+                          <div class="col-md-6">
+                             <input class="form-control" type="text" name="outTime" id="outTime" placeholder="Out Time" />
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+                 <div class="col-sm-12">
+                    <div class="form-group">
+                       <div class="row">
+                          <div class="col-md-12">
+                             <label>Attach Document</label>
+                             <input class="form-control" type="file" />
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+              </div>
+              <div class="text-center">
+                 <button type="button" (click)="typeSuccess()" data-bs-dismiss="modal" class="border-0 btn btn-primary btn-gradient-primary btn-rounded">
+                 Save</button>&nbsp;&nbsp;
+                 <button type="button" data-bs-dismiss="modal" class="btn btn-secondary btn-rounded">
+                 Cancel
+                 </button>
+              </div>
+           </form>
+        </div>
+     </div>
+  </div>
+</div>
+<!-- modal -->

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ColDef } from 'ag-grid-community';
-import { routes } from 'src/app/shared/core.index';
+import { routes ,ToasterService} from 'src/app/shared/core.index';
 
 @Component({
   selector: 'app-front-office',
@@ -65,6 +65,10 @@ colDefs: ColDef[] = [
   { field: "electric" }
 ];
 
-  constructor() {
+  constructor(private toaster: ToasterService) {
+  }
+
+  public typeSuccess() {
+    this.toaster.typeSuccess('Visitor has been added successfully!', 'Success!');
   }
 }
