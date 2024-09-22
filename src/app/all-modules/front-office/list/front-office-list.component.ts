@@ -5,11 +5,11 @@ import { DataService } from 'src/app/shared/data/data.service';
 import { apiResultFormat, Visitor } from 'src/app/shared/models/models';
 
 @Component({
-  selector: 'app-front-office',
-  templateUrl: './front-office.component.html',
-  styleUrls: ['./front-office.component.scss']
+  selector: 'app-front-office-list',
+  templateUrl: './front-office-list.component.html',
+  styleUrls: ['./front-office-list.component.scss']
 })
-export class FrontOfficeComponent {
+export class FrontOfficeListComponent {
   public visitors: Array<Visitor> = [];
   public routes = routes;
   public pagination : boolean = true;

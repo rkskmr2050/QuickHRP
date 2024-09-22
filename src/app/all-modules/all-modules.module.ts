@@ -10,8 +10,6 @@ import { ThemeSettingComponent } from './theme-setting/theme-setting.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { OPDComponent } from './opd/opd.component';
-import { PharmacyComponent } from './pharmacy/pharmacy.component';
 
 @NgModule({
   declarations: [
