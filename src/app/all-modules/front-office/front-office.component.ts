@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ColDef } from 'ag-grid-community';
 import { routes ,ToasterService} from 'src/app/shared/core.index';
 import { DataService } from 'src/app/shared/data/data.service';
-import { activities, apiResultFormat, Visitor } from 'src/app/shared/models/models';
+import { apiResultFormat, Visitor } from 'src/app/shared/models/models';
 
 @Component({
   selector: 'app-front-office',
