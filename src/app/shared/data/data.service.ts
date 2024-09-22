@@ -10,6 +10,14 @@ import { apiResultFormat, sideBar } from '../models/models';
 export class DataService {
   constructor(private http: HttpClient) {}
 
+  public getVisitors() {
+    return this.http.get<apiResultFormat>('assets/json/visitors.json').pipe(
+      map((res: apiResultFormat) => {
+        return res;
+      })
+    );
+  }
+
   public getActivities() {
     return this.http.get<apiResultFormat>('assets/json/activities.json').pipe(
       map((res: apiResultFormat) => {

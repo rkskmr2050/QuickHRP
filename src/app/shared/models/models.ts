@@ -209,3 +209,15 @@ export interface categories {
   action2 : string,
   isStatus: boolean
 }
+
+export interface Visitor {
+  id: number,
+  purpose: string,
+  name: string,
+  visitTo : string,
+  visitToPerson:string,
+  phone: string,
+  date: Date,
+  inTime: string,
+  outTime: string
+}
