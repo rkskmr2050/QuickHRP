@@ -6,7 +6,7 @@
                <div class="row">
                   <div class="col-md-6">
                      <label>Purpose<span style="color: red">&nbsp;*</span></label>
-                     <select class="form-select" formControlName="purpose"  [ngClass]="{
+                     <select class="form-select form-control" formControlName="purpose"  [ngClass]="{
                         'is-invalid': f['purpose'].touched && f['purpose'].invalid
                      }">
                         <option value="">-Select-</option>
@@ -62,14 +62,12 @@
                <div class="row">
                   <div class="col-md-6">
                      <label>Visit To<span style="color: red">&nbsp;*</span></label>
-                     <select class="form-select" formControlName="visitTo" 
+                     <select class="form-select form-control" formControlName="visitTo" (change)="onVisitToChange()"
                      [ngClass]="{
                         'is-invalid': f['visitTo'].touched && f['visitTo'].invalid
                      }" >
                         <option value="">-Select-</option>
-                        <option value="Visit">Staff</option>
-                        <option value="Inquiry ">OPD Patient </option>
-                        <option value="Seminar ">IPD Patient </option>
+                        <option *ngFor="let item of visitToOptions" [ngValue]="item">{{ item }}</option>
                      </select>
                      <div class="invalid-feedback" *ngIf="f['visitTo'].invalid && f['visitTo'].touched">
                         Please provide the visit to.
@@ -77,17 +75,21 @@
                   </div>
                   <div class="col-md-6">
                      <label>Related To</label>
-                     <select class="form-select" formControlName="relatedTo" 
+                     <select class="form-select form-control" formControlName="relatedTo" 
                      [ngClass]="{
                         'is-invalid': f['relatedTo'].touched && f['relatedTo'].invalid
                      }" >
                         <option value="">-Select-</option>
-                        <option value="Visit">Vijay Sharma</option>
-                        <option value="Inquiry ">Mohit Sharma </option>
-                        <option value="Seminar ">Gaurav Saini </option>
-                        <option value="Seminar ">Manmohan </option>
-                        <option value="Seminar ">Nishant </option>
+                        <option *ngFor="let item of relatedToOptions" [ngValue]="item">{{ item }}</option>
                      </select>
+                     <!-- <mat-form-field>
+                        <mat-label>Related To</mat-label>
+                        <mat-select>
+                        <input (keyup)="onKey($event)">
+                          <mat-option>None</mat-option>
+                          <mat-option *ngFor="let item of relatedToOptions" [value]="item">{{item}}</mat-option>
+                        </mat-select>
+                      </mat-form-field> -->
                      <div class="invalid-feedback" *ngIf="f['relatedTo'].invalid && f['relatedTo'].touched">
                         Please provide the related to.
                      </div>
@@ -160,7 +162,7 @@
       <div class="text-center">
          <button type="button" type="submit" class="border-0 btn btn-primary btn-gradient-primary btn-rounded">
             Save</button>&nbsp;&nbsp;
-         <button #closeModal type="button" data-bs-dismiss="modal" class="btn btn-secondary btn-rounded">
+         <button #closeModal type="button" data-bs-dismiss="modal" class="btn btn-secondary btn-rounded" (click) = "clear()">
             Cancel
          </button>
       </div>
