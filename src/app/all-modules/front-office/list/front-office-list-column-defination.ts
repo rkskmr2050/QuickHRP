@@ -5,7 +5,7 @@ export const front_office_list_colDefs: ColDef[] = [
   { field: "purpose", width: 100},
   { field: "name", filter:true },
   { field: "visitTo" , width: 120},
-  { field: "visitToPerson", headerName : 'IPD/OPD/Staff', width: 250 },
+  { field: "relatedTo", width: 250 },
   { field: "phone" , filter:true, width: 120},
   { field: "date", width: 120, filter: 'agDateColumnFilter',
      // add extra parameters for the date filter

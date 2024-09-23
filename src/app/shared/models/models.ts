@@ -40,7 +40,7 @@ export interface Visitor {
   name: string,
   idCard: string,
   visitTo : string,
-  visitToPerson:string,
+  relatedTo:string,
   noOfPerson:number,
   phone: string,
   date: Date,

@@ -1,8 +1,8 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component} from '@angular/core';
 import { ColDef } from 'ag-grid-community';
 import { routes} from 'src/app/shared/core.index';
 import { DataService } from 'src/app/shared/data/data.service';
-import { apiResultFormat, Visitor } from 'src/app/shared/models/models';
+import { Visitor } from 'src/app/shared/models/models';
 import { front_office_list_colDefs} from './front-office-list-column-defination';
 
 @Component({
@@ -12,7 +12,6 @@ import { front_office_list_colDefs} from './front-office-list-column-defination'
 })
 export class FrontOfficeListComponent {
   public visitors: Array<Visitor> = [];
-  @ViewChild('visitorFormModal', {static: false}) visitorFormModal!: ElementRef
   public routes = routes;
   public pagination : boolean = true;
   public paginationPageSize = 10;
@@ -21,8 +20,7 @@ export class FrontOfficeListComponent {
   // Column Definitions: Defines the columns to be displayed.
   colDefs: ColDef[] = front_office_list_colDefs;
 
-  constructor(private data: DataService) {
-  }
+  constructor(private data: DataService) { }
 
   ngOnInit() {
     this.getTableData();
@@ -30,8 +28,10 @@ export class FrontOfficeListComponent {
 
   private getTableData(): void {
     this.visitors = [];
-    this.data.getVisitors().subscribe((res: apiResultFormat) => {
-      this.visitors = res.data;
-    });
+    this.visitors = this.data.getVisitors().sort((a,b)=>b.id-a.id);
+  }
+
+  public refereshGRid(event:any){
+    this.getTableData();
   }
 }

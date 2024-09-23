@@ -60,7 +60,7 @@
          <div class="col-sm-12">
             <div class="form-group">
                <div class="row">
-                  <div class="col-md-3">
+                  <div class="col-md-6">
                      <label>Visit To<span style="color: red">&nbsp;*</span></label>
                      <select class="form-select" formControlName="visitTo" 
                      [ngClass]="{
@@ -75,11 +75,11 @@
                         Please provide the visit to.
                      </div>
                   </div>
-                  <div class="col-md-3">
-                     <label>OPD/IPD/Staff</label>
-                     <select class="form-select" formControlName="visitToPerson" 
+                  <div class="col-md-6">
+                     <label>Related To</label>
+                     <select class="form-select" formControlName="relatedTo" 
                      [ngClass]="{
-                        'is-invalid': f['visitToPerson'].touched && f['visitToPerson'].invalid
+                        'is-invalid': f['relatedTo'].touched && f['relatedTo'].invalid
                      }" >
                         <option value="">-Select-</option>
                         <option value="Visit">Vijay Sharma</option>
@@ -88,14 +88,9 @@
                         <option value="Seminar ">Manmohan </option>
                         <option value="Seminar ">Nishant </option>
                      </select>
-                     <div class="invalid-feedback" *ngIf="f['visitToPerson'].invalid && f['visitToPerson'].touched">
-                        Please provide the OPD/IPD/Staff.
+                     <div class="invalid-feedback" *ngIf="f['relatedTo'].invalid && f['relatedTo'].touched">
+                        Please provide the related to.
                      </div>
-                  </div>
-                  <div class="col-md-6">
-                     <label>Related To</label>
-                     <input class="form-control" type="text" name="relatedTo" id="relatedTo"
-                        formControlName="relatedTo" />
                   </div>
                </div>
             </div>
