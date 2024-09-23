@@ -37,7 +37,7 @@
   </div>
 </div>
 <!-- Modal -->
-<div class="modal right fade" id="add_activity" tabindex="-1" role="dialog" aria-modal="true">
+<div class="modal right fade" id="add_activity" tabindex="-1" role="dialog" aria-modal="true" data-bs-backdrop='static'>
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
      <button type="button" class="close md-close" data-bs-dismiss="modal" aria-label="Close">
      <span aria-hidden="true">×</span>
@@ -48,112 +48,8 @@
            <h4 class="modal-title">Add Visitor</h4>
         </div>
         <div class="modal-body">
-           <form class="forms-sampme">
-              <div class="row">
-                 <div class="col-sm-12">
-                    <div class="form-group">
-                       <div class="row">
-                          <div class="col-md-6">
-                             <select class="form-select">
-                                <option value="">-Select Purpose-</option>
-                                <option value="Visit">Visit</option>
-                                <option value="Inquiry ">Inquiry </option>
-                                <option value="Seminar ">Seminar </option>
-                             </select>
-                          </div>
-                          <div class="col-md-6">
-                             <input class="form-control" type="text" name="name" id="name" placeholder="Name" />
-                          </div>
-                       </div>
-                    </div>
-                 </div>
-                 <div class="col-sm-12">
-                    <div class="form-group">
-                       <div class="row">
-                          <div class="col-md-6">
-                             <input class="form-control" type="text" name="phone" id="phone" placeholder="Phone" />
-                          </div>
-                          <div class="col-md-6">
-                             <input class="form-control" type="text" name="idCard" id="idCard" placeholder="ID Card" />
-                          </div>
-                       </div>
-                    </div>
-                 </div>
-                 <div class="col-sm-12">
-                    <div class="form-group">
-                       <div class="row">
-                          <div class="col-md-3">
-                             <select class="form-select">
-                                <option value="">-Select Visit To-</option>
-                                <option value="Visit">Staff</option>
-                                <option value="Inquiry ">OPD Patient </option>
-                                <option value="Seminar ">IPD Patient </option>
-                             </select>
-                          </div>
-                          <div class="col-md-3">
-                             <select class="form-select">
-                                <option value="">-Select Staff/OPD/IPD-</option>
-                                <option value="Visit">Vijay Sharma</option>
-                                <option value="Inquiry ">Mohit Sharma </option>
-                                <option value="Seminar ">Gaurav Saini </option>
-                                <option value="Seminar ">Manmohan </option>
-                                <option value="Seminar ">Nishant </option>
-                             </select>
-                          </div>
-                          <div class="col-md-6">
-                             <input class="form-control" type="text" name="relatedTo" id="relatedTo" disabled="true" placeholder="Related To" />
-                          </div>
-                       </div>
-                    </div>
-                 </div>
-                 <div class="col-sm-12">
-                    <div class="form-group">
-                       <div class="row">
-                          <div class="col-md-6">
-                             <input class="form-control" type="text" name="noOfPerson" id="noOfPerson" placeholder="Numner Of Person" />
-                          </div>
-                          <div class="col-md-6">
-                             <input class="form-control datetimepicker" type="text" placeholder="MM/DD/YY" matInput
-                                [matDatepicker]="picker1" />
-                             <mat-datepicker #picker1></mat-datepicker>
-                             <mat-datepicker-toggle matIconSuffix [for]="picker1"
-                                class="modal-activity-datepicker"></mat-datepicker-toggle>
-                          </div>
-                       </div>
-                    </div>
-                 </div>
-                 <div class="col-sm-12">
-                    <div class="form-group">
-                       <div class="row">
-                          <div class="col-md-6">
-                             <input class="form-control" type="text" name="inTime" id="inTime" placeholder="In Time" />
-                          </div>
-                          <div class="col-md-6">
-                             <input class="form-control" type="text" name="outTime" id="outTime" placeholder="Out Time" />
-                          </div>
-                       </div>
-                    </div>
-                 </div>
-                 <div class="col-sm-12">
-                    <div class="form-group">
-                       <div class="row">
-                          <div class="col-md-12">
-                             <label>Attach Document</label>
-                             <input class="form-control" type="file" />
-                          </div>
-                       </div>
-                    </div>
-                 </div>
-              </div>
-              <div class="text-center">
-                 <button type="button" (click)="typeSuccess()" data-bs-dismiss="modal" class="border-0 btn btn-primary btn-gradient-primary btn-rounded">
-                 Save</button>&nbsp;&nbsp;
-                 <button type="button" data-bs-dismiss="modal" class="btn btn-secondary btn-rounded">
-                 Cancel
-                 </button>
-              </div>
-           </form>
-        </div>
+          <app-front-office-add-form></app-front-office-add-form>
+      </div>
      </div>
   </div>
 </div>

@@ -5,16 +5,20 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { AgGridModule } from 'ag-grid-angular';
 import { FrontOfficeRoutingModule } from './front-office-routing.module';
 import { FrontOfficeListComponent } from './list/front-office-list.component';
+import { FrontOfficeAddFormComponent } from './add-form/front-office-add-form.component';
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 
 @NgModule({
   declarations: [
-    FrontOfficeListComponent
+    FrontOfficeListComponent,
+    FrontOfficeAddFormComponent
   ],
   imports: [
     CommonModule,
     FrontOfficeRoutingModule,
     SharedModule,
-    AgGridModule
+    AgGridModule,
+    NgxMaterialTimepickerModule
   ]
 })
 export class FrontOfficeModule { }
