@@ -31,8 +31,11 @@ https://v15.angular.io/guide/setup-local
 
 ## Commands
 npm install -g @angular/cli@15
+
 Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+
 npm install --legacy-peer-deps
+
 ng serve -o
 
 
