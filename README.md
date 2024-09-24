@@ -38,6 +38,9 @@ npm install --legacy-peer-deps
 
 ng serve -o
 
+## Git Commands:
+Pull latest : git pull origin {branchName}  
+
 
 
 
