@@ -3,11 +3,9 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.1.
 
 ## Prerequisites Softwares
-Visual Studio Code
-
-git
-
-Node.js
+1. Visual Studio Code
+2. git
+3. Node.js
 
 ## Development server
 
