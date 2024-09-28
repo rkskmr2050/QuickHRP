@@ -7,18 +7,22 @@ import { FrontOfficeRoutingModule } from './front-office-routing.module';
 import { FrontOfficeListComponent } from './list/front-office-list.component';
 import { FrontOfficeAddFormComponent } from './add-form/front-office-add-form.component';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+import { FrontOfficeDataService } from './shared/services/front-office.service';
 
 @NgModule({
   declarations: [
     FrontOfficeListComponent,
-    FrontOfficeAddFormComponent
+    FrontOfficeAddFormComponent,
   ],
   imports: [
     CommonModule,
     FrontOfficeRoutingModule,
     SharedModule,
     AgGridModule,
-    NgxMaterialTimepickerModule
+    NgxMaterialTimepickerModule,
+  ],
+  providers: [
+    FrontOfficeDataService,
   ]
 })
 export class FrontOfficeModule { }

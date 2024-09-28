@@ -1,5 +1,5 @@
 <div>
-   <form class="forms-visitor" [formGroup]="visitorForm" (ngSubmit)="onSubmit(visitorForm)">
+   <form class="forms-visitor" [formGroup]="visitorForm" (ngSubmit)="onSubmit()">
       <div class="row">
          <div class="col-sm-12">
             <div class="form-group">
@@ -11,8 +11,8 @@
                      }">
                         <option value="">-Select-</option>
                         <option value="Visit">Visit</option>
-                        <option value="Inquiry ">Inquiry </option>
-                        <option value="Seminar ">Seminar </option>
+                        <option value="Inquiry">Inquiry </option>
+                        <option value="Seminar">Seminar </option>
                      </select>
                      <div class="invalid-feedback" *ngIf="f['purpose'].invalid && f['purpose'].touched">
                         Please provide the purpose.
@@ -82,14 +82,6 @@
                         <option value="">-Select-</option>
                         <option *ngFor="let item of relatedToOptions" [ngValue]="item">{{ item }}</option>
                      </select>
-                     <!-- <mat-form-field>
-                        <mat-label>Related To</mat-label>
-                        <mat-select>
-                        <input (keyup)="onKey($event)">
-                          <mat-option>None</mat-option>
-                          <mat-option *ngFor="let item of relatedToOptions" [value]="item">{{item}}</mat-option>
-                        </mat-select>
-                      </mat-form-field> -->
                      <div class="invalid-feedback" *ngIf="f['relatedTo'].invalid && f['relatedTo'].touched">
                         Please provide the related to.
                      </div>
@@ -162,7 +154,7 @@
       <div class="text-center">
          <button type="button" type="submit" class="border-0 btn btn-primary btn-gradient-primary btn-rounded">
             Save</button>&nbsp;&nbsp;
-         <button #closeModal type="button" data-bs-dismiss="modal" class="btn btn-secondary btn-rounded" (click) = "clear()">
+         <button #closeModal type="button" data-bs-dismiss="modal" class="btn btn-secondary btn-rounded" (click)="cancel()">
             Cancel
          </button>
       </div>

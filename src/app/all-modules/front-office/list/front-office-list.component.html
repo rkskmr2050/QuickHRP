@@ -1,56 +1,121 @@
 <div>
-  <div class="page-wrapper">
-     <div class="content container-fluid">
-        <!-- Page Header -->
-        <div class="crms-title row bg-white mb-4">
-           <div class="col">
-              <h3 class="page-title">
-                 <span class="page-title-icon bg-gradient-primary text-white me-2">
-                 <i class="la la-table"></i>
-                 </span>
-                 <span>Front Office</span>
-              </h3>
-           </div>
-           <div class="col text-end">
-              <ul class="list-inline-item ps-0 m-0">
-                 <li class="list-inline-item">
-                    <button class="add btn btn-gradient-primary font-weight-bold text-white todo-list-add-btn btn-rounded"
-                       id="add-task" data-bs-toggle="modal" data-bs-target="#add_activity">
-                    Add Visitor
-                    </button>
-                 </li>
-              </ul>
-           </div>
-        </div>
-        <div>
-        <!-- /Page Header -->
-        <ag-grid-angular
-        class="ag-theme-quartz"
-        style="height: 510px;"
-        [pagination]="pagination"
-        [paginationPageSize]="paginationPageSize"
-        [paginationPageSizeSelector]="paginationPageSizeSelector"
-        [rowData]="visitors"
-        [columnDefs]="colDefs" />
+   <div class="page-wrapper">
+      <div class="content container-fluid">
+         <!-- Page Header -->
+         <div class="crms-title row bg-white mb-4">
+            <div class="col">
+               <h3 class="page-title">
+                  <span class="page-title-icon bg-gradient-primary text-white me-2">
+                     <i class="la la-table"></i>
+                  </span>
+                  <span>Front Office</span>
+               </h3>
+            </div>
+            <div class="col text-end">
+               <ul class="list-inline-item ps-0 m-0">
+                  <li class="list-inline-item">
+                     <button
+                        class="add btn btn-gradient-primary font-weight-bold text-white todo-list-add-btn btn-rounded"
+                        id="add-task" data-bs-toggle="modal" data-bs-target="#add_visitor" (click)="onAddVisitorButton_Click()">
+                        Add Visitor
+                     </button>
+                  </li>
+               </ul>
+            </div>
+         </div>
+         <div>
+            <!-- /Page Header -->
+            <ag-grid-angular class="ag-theme-quartz" style="height: 510px;" [pagination]="pagination"
+               [paginationPageSize]="paginationPageSize" [paginationPageSizeSelector]="paginationPageSizeSelector"
+               [rowData]="visitors" [columnDefs]="colDefs" [context]="this" />
+         </div>
       </div>
-     </div>
-  </div>
+   </div>
 </div>
-<!-- Modal -->
-<div class="modal right fade" id="add_activity" tabindex="-1" role="dialog" aria-modal="true" data-bs-backdrop='static'>
-  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-     <button type="button" class="close md-close" data-bs-dismiss="modal" aria-label="Close">
-     <span aria-hidden="true">×</span>
-     </button>
-     <div class="modal-content">
-        <div class="modal-header">
-           <button type="button" class="btn-close xs-close close-modal" data-bs-dismiss="modal"></button>
-           <h4 class="modal-title">Add Visitor</h4>
-        </div>
-        <div class="modal-body">
-          <app-front-office-add-form (onAddVisitor)="refereshGRid($event)"></app-front-office-add-form>
+
+
+<!-- Add Visitor Modal -->
+<div class="modal right fade" id="add_visitor" tabindex="-1" role="dialog" aria-modal="true" data-bs-backdrop='static'>
+   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <button type="button" class="close md-close" data-bs-dismiss="modal" aria-label="Close" (click)="onVisitorModalClose()">
+         <span aria-hidden="true">×</span>
+      </button>
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="btn-close xs-close close-modal" data-bs-dismiss="modal" (click)="onVisitorModalClose()"></button>
+            <h4 class="modal-title">Add Visitor</h4>
+         </div>
+         <div class="modal-body">
+            <div *ngIf="!dismissedModal">
+               <app-front-office-add-form (onAddVisitor)="refereshGRid($event)" (onCancel)="onVisitorModalClose()" [isEdit]="isEdit"
+                  [visitorId]="visitor? visitor.id : 0"></app-front-office-add-form>
+            </div>
+         </div>
       </div>
-     </div>
-  </div>
+   </div>
+</div>
+<!-- modal -->
+
+
+<!-- View Visitor Modal -->
+<div class="modal" id="view_visitor" tabindex="-1" role="dialog" aria-modal="true" data-bs-backdrop='static'>
+   <div class="modal-dialog modal-lg" role="document">
+      <button type="button" class="close md-close" data-bs-dismiss="modal" aria-label="Close" (click)="onViewVisitorModalClose()">
+         <span aria-hidden="true">×</span>
+      </button>
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="btn-close xs-close close-modal" data-bs-dismiss="modal" (click)="onViewVisitorModalClose()"></button>
+            <h4 class="modal-title">View Visitor</h4>
+         </div>
+         <div class="modal-body">
+            <table *ngIf="visitor">
+               <tr>
+                  <td><b>Purpose:</b></td>
+                  <td><span [innerHtml]="visitor.purpose"></span></td>
+                  <td></td>
+                  <td><b>Name:</b></td>
+                  <td><span [innerHtml]="visitor.name"></span></td>
+               </tr>
+               <tr>
+                  <td><b>Phone Number:</b></td>
+                  <td><span [innerHtml]="visitor.phone"></span></td>
+                  <td></td>
+                  <td><b>ID Card:</b></td>
+                  <td><span [innerHtml]="visitor.idCard"></span></td>
+               </tr>
+               <tr>
+                  <td><b>Visit To:</b></td>
+                  <td><span [innerHtml]="visitor.visitTo"></span></td>
+                  <td></td>
+                  <td><b>Related To:</b></td>
+                  <td><span [innerHtml]="visitor.relatedTo"></span></td>
+               </tr>
+               <tr>
+                  <td><b>Number Of Person:</b></td>
+                  <td><span [innerHtml]="visitor.noOfPerson"></span></td>
+                  <td></td>
+                  <td><b>Date:</b></td>
+                  <td><span [innerHtml]="visitor.date"></span></td>
+               </tr>
+               <tr>
+                  <td><b>In Time:</b></td>
+                  <td><span [innerHtml]="visitor.inTime"></span></td>
+                  <td></td>
+                  <td><b>Out Time:</b></td>
+                  <td><span [innerHtml]="visitor.outTime"></span></td>
+               </tr>
+               <tr>
+                  <td>
+                     <b>Note:</b>
+                  </td>
+                  <td colspan="4">
+                     <span [innerHtml]="visitor.note"></span>
+                  </td>
+               </tr>
+            </table>
+         </div>
+      </div>
+   </div>
 </div>
 <!-- modal -->
