@@ -16,7 +16,8 @@
                   <li class="list-inline-item">
                      <button
                         class="add btn btn-gradient-primary font-weight-bold text-white todo-list-add-btn btn-rounded"
-                        id="add-task" data-bs-toggle="modal" data-bs-target="#add_visitor" (click)="onAddVisitorButton_Click()">
+                        id="add-task" data-bs-toggle="modal" data-bs-target="#add_visitor"
+                        (click)="onAddVisitorButton_Click()">
                         Add Visitor
                      </button>
                   </li>
@@ -37,18 +38,20 @@
 <!-- Add Visitor Modal -->
 <div class="modal right fade" id="add_visitor" tabindex="-1" role="dialog" aria-modal="true" data-bs-backdrop='static'>
    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-      <button type="button" class="close md-close" data-bs-dismiss="modal" aria-label="Close" (click)="onVisitorModalClose()">
+      <button type="button" class="close md-close" data-bs-dismiss="modal" aria-label="Close"
+         (click)="onVisitorModalClose()">
          <span aria-hidden="true">×</span>
       </button>
       <div class="modal-content">
          <div class="modal-header">
-            <button type="button" class="btn-close xs-close close-modal" data-bs-dismiss="modal" (click)="onVisitorModalClose()"></button>
+            <button type="button" class="btn-close xs-close close-modal" data-bs-dismiss="modal"
+               (click)="onVisitorModalClose()"></button>
             <h4 class="modal-title">Add Visitor</h4>
          </div>
          <div class="modal-body">
             <div *ngIf="!dismissedModal">
-               <app-front-office-add-form (onAddVisitor)="refereshGRid($event)" (onCancel)="onVisitorModalClose()" [isEdit]="isEdit"
-                  [visitorId]="visitor? visitor.id : 0"></app-front-office-add-form>
+               <app-front-office-add-form (onAddVisitor)="refereshGRid($event)" (onCancel)="onVisitorModalClose()"
+                  [isEdit]="isEdit" [visitorId]="visitor? visitor.id : 0"></app-front-office-add-form>
             </div>
          </div>
       </div>
@@ -60,12 +63,14 @@
 <!-- View Visitor Modal -->
 <div class="modal" id="view_visitor" tabindex="-1" role="dialog" aria-modal="true" data-bs-backdrop='static'>
    <div class="modal-dialog modal-lg" role="document">
-      <button type="button" class="close md-close" data-bs-dismiss="modal" aria-label="Close" (click)="onViewVisitorModalClose()">
+      <button type="button" class="close md-close" data-bs-dismiss="modal" aria-label="Close"
+         (click)="onViewVisitorModalClose()">
          <span aria-hidden="true">×</span>
       </button>
       <div class="modal-content">
          <div class="modal-header">
-            <button type="button" class="btn-close xs-close close-modal" data-bs-dismiss="modal" (click)="onViewVisitorModalClose()"></button>
+            <button type="button" class="btn-close xs-close close-modal" data-bs-dismiss="modal"
+               (click)="onViewVisitorModalClose()"></button>
             <h4 class="modal-title">View Visitor</h4>
          </div>
          <div class="modal-body">
@@ -114,6 +119,10 @@
                   </td>
                </tr>
             </table>
+         </div>
+         <div class="modal-footer text-center">
+            <button class="add btn btn-gradient-primary font-weight-bold text-white todo-list-add-btn btn-rounded"
+               data-bs-dismiss="modal" aria-label="Close" (click)="onVisitorModalClose()">Ok</button>
          </div>
       </div>
    </div>
